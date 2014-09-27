@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="aab24a14-e9d6-4246-847b-2693cd4d3aed" name="Default" comment="git和webstorm集成">
+    <list default="true" id="aab24a14-e9d6-4246-847b-2693cd4d3aed" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="expressTpl.iws" />
@@ -224,7 +224,11 @@
       <created>1411818623192</created>
       <updated>1411818623192</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="git和webstorm集成">
+      <created>1411818779786</created>
+      <updated>1411818779786</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
