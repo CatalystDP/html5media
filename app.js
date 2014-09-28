@@ -11,6 +11,7 @@ var globalVar=require('./routes/global/global');
 var formValidation=require('express-validator');
 var multipart=require('express/lib/middleware/connect-multiparty');
 var remoteServer=require('./routes/app/config/remote_config');
+var config=require('./config.json');
 var app = express();
 
 // view engine setup
@@ -71,9 +72,12 @@ app.use(function(err, req, res, next) {
         error: {}
     });
 });
-
-app.set('port',3000);
-//module.exports = app;
-var server=app.listen(app.get('port'),function(){
-    console.log('listen port on '+server.address().port);
-});
+if(config.standalone){
+    app.set('port',3000);
+    var server=app.listen(app.get('port'),function(){
+        console.log('listen port on '+server.address().port);
+    });
+}
+else{
+    module.exports=app;
+}
