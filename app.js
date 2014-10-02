@@ -7,7 +7,6 @@ var session=require('express-session');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var globalVar=require('./routes/global/global');
-var formValidation=require('express-validator');
 var multer=require('multer');
 var config=require('./config.json');
 var app = express();
@@ -30,17 +29,7 @@ app.use(multer({
     }
 }));
 app.use(express.static(path.join(__dirname,'public')));
-/*app.use(function(res,req,next){
-    process.on('uncaughtException',function(err){
-        console.log(err);
-    });
-    next();
-});*/
 app.use(globalVar);
-app.use(function(req,res,next){
-    res.locals.shellPath=__dirname+'/routes/app/shell/';
-    next();
-});
 app.use('/', routes);
 app.use('/users', users);
 
