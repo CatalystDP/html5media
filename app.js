@@ -8,8 +8,7 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var globalVar=require('./routes/global/global');
 var formValidation=require('express-validator');
-var multipart=require('express/lib/middleware/connect-multiparty');
-var remoteServer=require('./routes/app/config/remote_config');
+var multer=require('multer');
 var config=require('./config.json');
 var app = express();
 
@@ -22,7 +21,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(formValidation());
 app.use(cookieParser());
-app.use(multipart({uploadDir:'./upload'}));
+app.use(multer({
+    dest:'./upload',
+    rename:function(filed,filename){
+        var now=Date.now();
+        now=now.toString();
+        return now+parseInt(Math.random()*1000000);
+    }
+}));
 app.use(express.static(path.join(__dirname,'public')));
 /*app.use(function(res,req,next){
     process.on('uncaughtException',function(err){
