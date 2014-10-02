@@ -44,7 +44,7 @@ define(function (require, exports, module) {
                     events: null,
                     attrs: {}
                 };
-                option = option ? $.extend(defaultOption, option) : defaultOption;
+                option = $.extend(defaultOption, option);
                 _init.call(this, option);
                 this._stamp();
             },
@@ -90,7 +90,7 @@ define(function (require, exports, module) {
                             _delegateEvents(ele, key, func);
                         });
                     }
-                    else if (length == 2 && $.type(args[0])=='string' && $.isFunction(args[1])) {
+                    else if (length == 2 && $.type(args[0]) == 'string' && $.isFunction(args[1])) {
                         _delegateEvents(ele, args[0], args[1]);
                     }
                     else {
@@ -128,15 +128,15 @@ define(function (require, exports, module) {
                             });
                         }
                         else if ($.isArray(args)) {
-                            $.each(args, function (key,item) {
+                            $.each(args, function (key, item) {
                                 _undelegateEvents(parent, item);
                             });
                         }
-                        else if ($.type(args)=='string') {
+                        else if ($.type(args) == 'string') {
                             _undelegateEvents(parent, args);
                         }
                     }
-                    else if (length == 2 && $.type(args[0])=='string' && $.isFunction(args[1])) {
+                    else if (length == 2 && $.type(args[0]) == 'string' && $.isFunction(args[1])) {
                         _undelegateEvents(parent, args[0], args[1]);
                     }
                     else {
@@ -152,17 +152,13 @@ define(function (require, exports, module) {
             /**
              * @description 在当前父元素下查找子元素,并且对已选中的dom对象进行了缓存
              * @param {String} selector - 选择器
-             * @param {Bool} cache 清除缓存,此时不会返回元素
+             * @param {Boolean} useCache 是否启用缓存,defaule=true
              */
-            $: function (selector,cache) {
-                cache === undefined && (cache = true);
+            $: function (selector,useCache) {
+                useCache = useCache===undefined? true : false;
                 var selectorStore = this.selectorStore || (this.selectorStore = {});
-                if (cache && selectorStore[selector]) {
+                if (useCache && selectorStore[selector]) {
                     return selectorStore[selector];
-                }
-                if(!cache && selectorStore[selector]){
-                    (delete selectorStore[selector]) || (selectorStore[selector]=null);
-                    return;
                 }
                 var ele = this.element;
                 var finded = ele.find(selector);
@@ -205,7 +201,7 @@ define(function (require, exports, module) {
                 this.undelegateEvents();
                 this.element.remove();
                 (delete cachedInstances[this.cid]) || (cachedInstances[this.cid] = null);
-                $.each(this, function (key,value) {
+                $.each(this, function (key, value) {
                     if (self.hasOwnProperty(key)) {
                         (delete self[key]) || (self[key] = null);
                     }
@@ -272,7 +268,7 @@ define(function (require, exports, module) {
     }
 
     /**
-     * @param {ZeptoObject} parent - 等价于this.element
+     * @param {jQueryObject} parent - 等价于this.element
      * @param {String} name 事件与被代理元素选择器的字符串拼接用冒号分割 e.g 'click:#id'
      * @param {Function} func 事件处理函数
      * @private
