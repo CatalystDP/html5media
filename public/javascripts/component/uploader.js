@@ -6,13 +6,11 @@
 define(function (require, exports, module) {
     var $ = require('jQuery');
     var klass = require('../mod/klass');
-    var event = require('../mod/globalevent');
     var Widget = require('../widget/widget');
     /**
      * @constructor
      * @alias module:uploader
      * @requires klass
-     * @requires globalevent
      * @requires event
      * @requires jQuery
      * @requires widget
