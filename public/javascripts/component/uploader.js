@@ -198,6 +198,7 @@ define(function (require, exports, module) {
                     var files;
                     var name_type;
                     if (isHtml5) {
+                        self.resetProgress();
                         var files = target[0].files;
                         name_type = [];
                         for (var i = 0, j = files.length; i < j; ++i) {
@@ -224,6 +225,12 @@ define(function (require, exports, module) {
                     if (self.option.usingHtml5) {
                         return false;
                     }
+                    var uploadStatus=self.$('.uploadStatus');
+                    if(uploadStatus.length!=0){
+                        uploadStatus.remove();
+                    }
+                    var p=document.createElement('<p class="uploadStatus">正在上传</p>');
+                    self.$('.submitcover').before(p);
                     return true;
                 }
             });
@@ -256,6 +263,7 @@ define(function (require, exports, module) {
                 catch (e) {
                     alert('上传失败');
                 }
+                self.$('.uploadStatus').text('上传完成');
                 self.option.onIframeLoaded && self.option.onIframeLoaded(result);
             });
             this.option.usingHtml5 && this.delegateEvents({
