@@ -36,7 +36,11 @@ function load(req, res, next) {
 }
 
 router.get('/', function (req, res) {
-    res.redirect('/iface/index/index');
+    req.params={
+        controller:'index',
+        'function':'index'
+    };
+    load(req,res,next);
 });
 router.get('/iface/:controller/:function*?', function (req, res, next) {
     load(req, res, next);
