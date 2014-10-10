@@ -7,6 +7,7 @@ var session=require('express-session');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var globalVar=require('./routes/global/global');
+var compression = require('compression');
 var multer=require('multer');
 var config=require('./config.json');
 var app = express();
@@ -15,6 +16,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+app.use(compression());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
