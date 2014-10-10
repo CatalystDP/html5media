@@ -257,6 +257,8 @@ define(function (require, exports, module) {
         this.inlineId && (this.template = this.getInlineTpl(this.inlineId)) && this.parseTemplateElement();
         !this.element && !this.inlineId && this.parseTemplateElement();
         _initAttrs.call(this);
+        option.views && this.registerViews(option.views);
+        option.models && this.registerModels(option.models);
         option.events && this.delegateEvents(option.events);
         this.parentNode = this.getElement().parent();
     }
