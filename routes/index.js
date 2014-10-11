@@ -35,7 +35,7 @@ function load(req, res, next) {
 
 }
 
-router.get('/', function (req, res) {
+router.get('/', function (req, res,next) {
     req.params={
         controller:'index',
         'function':'index'
