@@ -1,17 +1,25 @@
-var request=require('request');
-request=request.defaults({jar:true});
-function Request(){
-    this.option={
-        headers:{}
-    };
-    this.request=request;
-}
-var proto=Request.prototype;
-proto.setUrl=function(url){
-  this.option.url=url;
-};
-proto.setCookie=function(cookie){
-    this.option.headers.Cookie=cookie;
-};
+var request = require('request');
 
-module.exports=Request;
+function Request() {
+    this.option = {
+        headers: {}
+    };
+    this.request=request
+}
+var proto = Request.prototype;
+proto.setUrl = function (url) {
+    this.option.url = url;
+};
+proto.setCookie = function (cookie) {
+    var arr=[];
+    for(var p in cookie){
+        if(cookie.hasOwnProperty(p)){
+            arr.push(p+'='+cookie[p]);
+        }
+    }
+    this.option.headers.Cookie = arr.join(';');
+};
+proto.setMethod = function (method) {
+    this.option.headers.method = method;
+};
+module.exports = Request;
