@@ -21,7 +21,6 @@ app.use(compression());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
-app.use(formValidation());
 app.use(cookieParser());
 app.use(csrf({
     cookie:true
