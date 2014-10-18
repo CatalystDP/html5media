@@ -26,7 +26,7 @@ exports.uploadToServer=function(req,options){
         form.append(options.filed,
             fs.createReadStream(path.join(options.dest,item.name)),
             {
-                filename:item.originalname,
+                filename:item.name,
                 contentType:item.mimeType,
                 knownLength:item.size
             });
