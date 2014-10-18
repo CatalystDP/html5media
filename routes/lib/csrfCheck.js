@@ -12,7 +12,8 @@ function Csrf(options){
 }
 /**
  * @description 用来验证token和secret是否匹配
- * @param req express req对象，通过cookie来验证
+ * @param req express req对象
+ * @param res express res对象
  */
 Csrf.prototype.verify=function(req,res){
     var token = (req.query&&req.query[this.cookieKey])||(req.body&&req.body[this.cookieKey]);
@@ -29,12 +30,6 @@ Csrf.prototype.generate=function(res,callback){
     var self=this;
     this.csrf.secret(function(err,secret){
         var token=self.csrf.create(secret);
-//        var cookie=[];
-//        cookie.push(self.cookieKey+'='+secret);
-//        for(var p in self.cookieOpt){
-//            self.cookieOpt.hasOwnProperty(p) && cookie.push(p+'='+self.cookieOpt[p]);
-//        }
-//        res.setHeader('Set-Cookie',cookie.join('; '));
         res.cookie(self.cookieKey,secret,self.cookieOpt);
         callback(token);
     });
