@@ -8,7 +8,6 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var globalVar=require('./routes/global/global');
 var compression = require('compression');
-var csrf=require('csurf');
 var multer=require('multer');
 var config=require('./config.json');
 var app = express();
@@ -22,9 +21,6 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
-app.use(csrf({
-    cookie:true
-}));
 app.use(function(err,req,res,next){
     if (err.code !== 'EBADCSRFTOKEN') return next(err);
 
