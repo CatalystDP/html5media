@@ -6,11 +6,10 @@ function Request() {
     };
     this.request=request
 }
-var proto = Request.prototype;
-proto.setUrl = function (url) {
+Request.prototype.setUrl = function (url) {
     this.option.url = url;
 };
-proto.setCookie = function (cookie) {
+Request.prototype.setCookie = function (cookie) {
     var arr=[];
     for(var p in cookie){
         if(cookie.hasOwnProperty(p)){
@@ -19,7 +18,7 @@ proto.setCookie = function (cookie) {
     }
     this.option.headers.Cookie = arr.join(';');
 };
-proto.setMethod = function (method) {
+Request.prototype.setMethod = function (method) {
     this.option.headers.method = method;
 };
 module.exports = Request;
