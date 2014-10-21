@@ -8,6 +8,7 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var globalVar=require('./routes/global/global');
 var compression = require('compression');
+var domainMiddleware=require('express-domain-middleware');
 var multer=require('multer');
 var config=require('./config.json');
 var app = express();
@@ -16,6 +17,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+app.use(domainMiddleware);//增加domainmiddleware
 app.use(compression());
 app.use(logger('dev'));
 app.use(bodyParser.json());
