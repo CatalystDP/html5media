@@ -1,8 +1,10 @@
 var request = require('request');
-
 function Request() {
     this.option = {
-        headers: {}
+        headers: {},
+        pool:{
+            maxSockets:100
+        }
     };
     this.request=request
 }
