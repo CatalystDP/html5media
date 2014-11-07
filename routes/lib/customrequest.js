@@ -23,4 +23,10 @@ Request.prototype.setCookie = function (cookie) {
 Request.prototype.setMethod = function (method) {
     this.option.headers.method = method;
 };
+Request.prototype.post=function(url,callback){
+    this.request.post(url,this.option,callback);
+};
+Request.prototype.get=function(url,callback){
+    this.request.get(url,this.option,callback);
+};
 module.exports = Request;
