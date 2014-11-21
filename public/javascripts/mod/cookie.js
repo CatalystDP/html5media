@@ -14,7 +14,6 @@ define(function (require, exports, module) {
     };
     exports.getCookie = function (key) {
         var cookies = document.cookie.replace(' ', '').split(';');
-        //var regExp = new RegExp(key + '=[^;]*;?');
         var matched;
         for (var i = 0, j = cookies.length; i < j; ++i) {
             var split=cookies[i].split('=');
@@ -25,9 +24,6 @@ define(function (require, exports, module) {
                 break;
             }
         }
-        //if (Object.prototype.toString.call(matched) == '[object Array]') {
-        //    return matched[0].split('=')[1].replace(';', '');
-        //}
         return decodeURIComponent(matched);
     };
     exports.removeCookie=function(key){

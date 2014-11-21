@@ -1,15 +1,14 @@
 var express = require('express');
 var router = express.Router();
-var os=require('os');
-var fs=require('fs');
+var fs = require('fs');
+var pahtUtil=require('path');
 /* GET home page. */
-var isWindows = os.type().toLowerCase().indexOf('windows') != -1;
 function load(req, res, next) {
-    var controller = req.params['controller'].replace(/_/g, isWindows ? '\\' : '/');
+    var controller = req.params['controller'].replace(/_/g,'/');
     var func = req.params['function'];
     var args;
     var obj;
-    var path = isWindows ? "" + __dirname + "\\app\\" + controller + ".js" : "" + __dirname + "/app/" + controller + ".js";
+    var path = pahtUtil.join(__dirname,"app",controller+'.js');
     fs.exists(path, function (status) {
         if (status) {
             obj = require(path);
@@ -36,10 +35,8 @@ function load(req, res, next) {
 }
 
 router.get('/', function (req, res,next) {
-    req.params={
-        controller:'index',
-        'function':'index'
-    };
+    req.params.controller='index';
+    req.params.function='index';
     load(req,res,next);
 });
 router.get('/iface/:controller/:function*?', function (req, res, next) {
