@@ -1,0 +1,22 @@
+<link rel="shortcut icon" type="image/x-icon" href="<%= locals.staticServer %>/images/icon/favicon.ico?t=20141018000"/>
+<script type="text/javascript" src="<%= locals.staticServer %>/seajs/sea.js"></script>
+<!--<script type="text/javascript" src="<%= locals.staticServer %>/seajs/seajs-combo.js"></script>-->
+<script>
+    seajs.config({
+        base: "<%=locals.staticServer%>/javascripts/",
+        comboSyntax: ['f=', ','],
+        comboSuffix:'?t=20140913004',
+        alias: {
+            "jQuery": "<%=locals.staticServer%>/javascripts/tools/jquery-1.10.2.js",
+            "jQueryColor": "<%=locals.staticServer%>/javascripts/tools/jquery.color-2.1.2.js",
+            'jQueryFormValidator': '<%=locals.staticServer%>/javascripts/tools/jquery.form-validator.js',
+            'jQueryColor': '<%=locals.staticServer%>/javascripts/tools/jquery.color-2.1.2',
+            'jQueryEasie': '<%=locals.staticServer%>/javascripts/tools/jquery.easing.1.3.js',
+            'security': '<%=locals.staticServer%>/javascripts/tools/security',
+            'wysiwyg': '<%=locals.staticServer%>/javascripts/tools/jquery.wysiwyg.js',
+            'facebox': '<%=locals.staticServer%>/javascripts/tools/facebox.js',
+            'dp_mz': '<%=locals.staticServer%>/javascripts/core/dp_mz_v2.js'
+        }
+    });
+
+</script>
