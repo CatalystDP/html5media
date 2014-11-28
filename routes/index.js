@@ -1,14 +1,14 @@
 var express = require('express');
 var router = express.Router();
 var fs = require('fs');
-var pahtUtil=require('path');
+var pathUtil=require('path');
 /* GET home page. */
 function load(req, res, next) {
     var controller = req.params['controller'].replace(/_/g,'/');
     var func = req.params['function'];
     var args;
     var obj;
-    var path = pahtUtil.join(__dirname,"app",controller+'.js');
+    var path = pathUtil.join(__dirname,"router",controller+'.js');
     fs.exists(path, function (status) {
         if (status) {
             obj = require(path);
