@@ -30,8 +30,9 @@ var copy = {};
 copysOfNodejsFiles.forEach(function (item) {
     copy['nodejs_' + item] = {
         expand: true,
-        src: './' + item + '/**/*.js',
-        dest: path.join(expressTplPath, item)
+        cwd:'./',
+        src: item + '/**/*.js',
+        dest:expressTplPath
     };
 });
 copysOfBroswerJsFiles.forEach(function (item) {
@@ -39,7 +40,7 @@ copysOfBroswerJsFiles.forEach(function (item) {
     copy['js_' + item] = {
         expand: true,
         src: prefix + item + '/**/*.js',
-        dest: path.join(expressTplPath, 'public', 'javascripts', item)
+        dest: expressTplPath
     };
 });
 copysOfSeajs.forEach(function (dir) {
@@ -47,7 +48,7 @@ copysOfSeajs.forEach(function (dir) {
     copy['seajs_' + dir] = {
         expand: true,
         src: prefix + dir + '/**/*.js',
-        dest: path.join(expressTplPath, 'public', dir)
+        dest:expressTplPath
     };
 });
 copyOfLessFiles.forEach(function (dir) {
@@ -55,7 +56,7 @@ copyOfLessFiles.forEach(function (dir) {
     copy['less_' + dir] = {
         expand: true,
         src: prefix + dir + '/**/*.less',
-        dest: path.join(expressTplPath, 'public/less', dir)
+        dest: expressTplPath
     };
 });
 copysOfCssFiles.forEach(function (dir) {
@@ -63,7 +64,7 @@ copysOfCssFiles.forEach(function (dir) {
     copy['css_'+dir]={
         expand:true,
         src:prefix+dir+'/**/*.js',
-        dest:path.join(expressTplPath,'public/css',dir)
+        dest:expressTplPath
     };
 });
 module.exports=function(grunt){
@@ -71,6 +72,7 @@ module.exports=function(grunt){
         copy:copy
     });
 
-    grunt.loadNpmTasks('grunt-copy');
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.registerTask('copyToTpl',['copy']);
 };
 
