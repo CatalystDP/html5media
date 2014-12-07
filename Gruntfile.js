@@ -17,10 +17,24 @@ for (var p in copys) {
     });
 }
 module.exports = function (grunt) {
+    copy.updateFrameWork={
+        expand:true,
+        cwd:expressTplPath,
+        src:[
+            '**',
+            '!GruntFile.js',
+            '.gitignore',
+            '!node_modules/**',
+            '!.git/**',
+            "/.idea/**"
+        ],
+        dest:'.'
+    };
     grunt.initConfig({
         copy: copy
     });
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.registerTask('copyToTpl','copy:toExpressTpl');
+    grunt.registerTask('setupProject','copy:updateFrameWork');
 };
 
