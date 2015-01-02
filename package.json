@@ -16,10 +16,13 @@
     "express": "~4.0.0",
     "express-domain-middleware": "^0.1.0",
     "express-session": "^1.9.2",
+    "log4js": "^0.6.21",
     "morgan": "~1.0.0",
     "multer": "^0.1.6",
     "request": "^2.49.0",
-    "static-favicon": "~1.0.0"
+    "static-favicon": "~1.0.0",
+    "uuid": "^2.0.1",
+    "ws": "^0.6.4"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
