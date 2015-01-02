@@ -1,1 +1,0 @@
-s='1345678abcdefghijklmnopq';

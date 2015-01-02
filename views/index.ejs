@@ -2,59 +2,31 @@
 <html>
 <head>
     <title><%= title %></title>
+    <link rel='stylesheet' href='/css/style.css'/>
+    <style>
+        .banner{
+            width: 300px;
+            height: 300px;
+        }
+        .banner div{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+    </style>
 </head>
 <body>
 <h1><%= title %></h1>
 
-<div id="wrapper">
-    <input id="testEvent" type="button" value="测试1">
-
-    <input id="testEvent2" type="button" value="测试2">
-        </div>
-
-        <p>Welcome to <%= title %></p>
-
-        <video id="video" autoplay="autoplay"></video>
-        <input type="button" id="takePhoto" value="照相"/>
-        <input type="button" id="mute" _ismuted=false value="打开/关闭声音"/>
-        <input type="button" id="togglevideo" value="打开/关闭图像">
-        <canvas id="canvas" width=640 height=480></canvas>
-        <!--<form action="">-->
-        <!--<input type="file" accept="audio/*;capture=microphone"/>-->
-        <!--</form>-->
-        <form action="/iface/index/submit" method="post">
-            <input name="check" value="1" type="checkbox"/><input name="check" value="1" type="checkbox"/><input
-                    name="check"
-                    value="1"
-                    type="checkbox"/><input
-                    name="check" value="1" type="checkbox"/>
-        </form>
-        <%- include util/seajs.ejs %>
-        <script>
-            //    seajs.use('app/test');
-        </script>
-        <script src="<%= locals.staticServer %>/javascripts/lib/zeptoevent.js"></script>
-        <!--<script src="<%= locals.staticServer %>/javascripts/lib/zepto.js"></script>-->
-        <script>
-            var ele =
-                    U.event(document);
-            ele.on('click', '#wrapper', function (e) {
-                console.log('wrapper event Target',e);
-                console.log('wrapper event Target',this);
-            });
-            ele.on('click', '#testEvent2', function (e) {
-                console.log('testEvent2 event Target', e);
-                console.log('testEvent2 event Target',this);
-
-            });
-            ele.on('click', '#testEvent', function (e) {
-                console.log('testEvent event Target', e);
-                console.log('testEvent event Target', this);
-                e.stopPropagation();
-            });
-
-
-
-        </script>
+<p>Welcome to <%= title %></p>
+<div class="banner" style="position: relative">
+    <div style="background-color: red">1</div>
+    <div style="background-color:green">2</div>
+    <div style="background-color:blue">3</div>
+</div>
+<%- include util/seajs.ejs %>
+<script>
+    seajs.use('app/index');
+</script>
 </body>
 </html>
