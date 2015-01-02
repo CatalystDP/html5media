@@ -3,7 +3,9 @@
  */
 var express=require('express');
 var router=express.Router();
+var mainConfig=require('../config/main.config');
 router.use(function(req,res,next){
+   res.locals.staticServer=mainConfig.staticServer;
    next();
 });
 

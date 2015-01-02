@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/css/style.css'/>
     <style>
         .banner{
             width: 300px;
@@ -16,9 +14,7 @@
     </style>
 </head>
 <body>
-<h1><%= title %></h1>
 
-<p>Welcome to <%= title %></p>
 <div class="banner" style="position: relative">
     <div style="background-color: red">1</div>
     <div style="background-color:green">2</div>
@@ -26,7 +22,7 @@
 </div>
 <%- include util/seajs.ejs %>
 <script>
-    seajs.use('app/index');
+    seajs.use('app/test');
 </script>
 </body>
 </html>
