@@ -1,0 +1,12 @@
+{
+  "appenders":[
+    {
+      "type":"console"
+    },
+    {
+      "type":"file",
+      "catagory":"cheese",
+      "filename":"./log/webrtcServer.log"
+    }
+  ]
+}
