@@ -5,8 +5,25 @@
     },
     {
       "type":"file",
-      "catagory":"cheese",
-      "filename":"./log/webrtcServer.log"
+      "category":"express_debug",
+      "filename":"./logs/express_debug.log",
+      "maxLogSize":10485760
+    },
+    {
+      "type":"file",
+      "category":"express_access",
+      "maxLogSize":10485760,
+      "filename":"./logs/express_access.log"
+    },
+    {
+      "type":"file",
+      "category":"express_error",
+      "maxLogSize":10485760,
+      "filename":"./logs/express_error.log"
     }
-  ]
+  ],
+  "levels":{
+    "express_access":"INFO",
+    "express_debug":"TRACE"
+  }
 }
