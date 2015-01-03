@@ -20,8 +20,7 @@
     "morgan": "~1.0.0",
     "multer": "^0.1.6",
     "request": "^2.49.0",
-    "static-favicon": "~1.0.0",
-    "ws": "^0.6.4"
+    "static-favicon": "~1.0.0"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
