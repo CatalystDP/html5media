@@ -5,7 +5,7 @@
  */
 define(function (require, exports, module) {
     var klass = require('../mod/klass');
-    var $ = require('../lib/jquery-1.10.2.min');
+    var $ = require('../lib/jquery-1.10.2.min.js');
     var base = require('./base');
     /**
      * @constructor
