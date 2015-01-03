@@ -1,6 +1,6 @@
 var express = require('express');
 var path = require('path');
-var logger = require('morgan');
+var log4js=require('log4js');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session=require('express-session');
@@ -13,23 +13,22 @@ var multer=require('multer');
 var config=require('./config.json');
 var app = express();
 
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
+app.set('env',config.env);
 app.use(domainMiddleware);//增加domainmiddleware
 app.use(compression());
-app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
-app.use(function(err,req,res,next){
-    if (err.code !== 'EBADCSRFTOKEN') return next(err);
+/****log4js初始化****/
+log4js.configure('./config/log_config.json');
+var logger=log4js.getLogger('express_access');
 
-    // handle CSRF token errors here
-    res.status(403);
-    res.send('session has expired or form tampered with');
-});
+app.use(log4js.connectLogger(logger,{level:'auto'}));
+/*********/
 app.use(multer({
     dest:'./upload',
     rename:function(filed,filename){
@@ -55,26 +54,32 @@ app.use(function(req, res, next) {
 
 // development error handler
 // will print stacktrace
-//app.set('env','production');
 if (app.get('env') === 'development') {
+    logger=log4js.getLogger('express_debug');
     app.use(function(err, req, res, next) {
         res.status(err.status || 500);
         res.render('error', {
             message: err.message,
             error: err
         });
+        logger.trace(err.message,err.status,err.stack);
+    });
+
+}
+if(app.get('env')==='production'){
+    logger=log4js.getLogger('express_debug');
+    app.use(function(err, req, res, next) {
+        res.status(err.status || 500);
+        res.render('error', {
+            message: err.message,
+            error: {}
+        });
+        logger.error(err.message,err.status,err.stack);
     });
 }
-
 // production error handler
 // no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: {}
-    });
-});
+
 if(config.standalone){
     app.set('port',3000);
     var server=app.listen(app.get('port'),function(){

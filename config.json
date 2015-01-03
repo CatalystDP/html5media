@@ -1,3 +1,4 @@
 {
-    "standalone":true
+    "standalone":true,
+    "env":"development"
 }
