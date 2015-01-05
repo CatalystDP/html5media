@@ -1,0 +1,8 @@
+From https://github.com/CatalystDP/expressTpl
+ * branch            master     -> FETCH_HEAD
+Merge made by the 'recursive' strategy.
+ framework/app.js               |  7 +++++--
+ framework/package.json         | 17 ++---------------
+ framework/views/index.ejs      |  6 ++----
+ framework/views/util/seajs.ejs | 12 ++++++------
+ 4 files changed, 15 insertions(+), 27 deletions(-)
