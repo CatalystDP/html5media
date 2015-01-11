@@ -1,7 +1,6 @@
 var express = require('express');
 var path = require('path');
 var log4js=require('log4js');
-var template=require('art-template/node/template-native.js');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session=require('express-session');
@@ -14,10 +13,6 @@ var multer=require('multer');
 var config=require('./config.json');
 var app = express();
 
-template.config('base','');
-template.config('extname','.ejs');
-// view engine setup
-app.engine('ejs',template.__express);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.set('env',config.env);
