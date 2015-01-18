@@ -15,12 +15,9 @@ var multer=require('multer');
 var config=require('./config.json');
 var app = express();
 
-template.config('base','');
-template.config('extname','.ejs');
-// view engine setup
-app.engine('ejs',template.__express);
-app.set('view engine', 'ejs');
+
 app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 app.set('env',config.env);
 app.use(domainMiddleware);//增加domainmiddleware
 app.use(compression());
