@@ -11,14 +11,14 @@ var compression = require('compression');
 var domainMiddleware=require('express-domain-middleware');
 var multer=require('multer');
 var config=require('./config.json');
+var partial=require('express-partials');
 var app = express();
 
-
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 app.set('env',config.env);
 app.use(domainMiddleware);//增加domainmiddleware
+app.use(partial());
 app.use(compression());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());

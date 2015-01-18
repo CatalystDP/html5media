@@ -1,17 +1,20 @@
 <script>
-    var body=document.getElementsByTagName('body')[0];
-    var containerHeight = document.getElementsByTagName('body')[0].scrollHeight,
-            e = document.documentElement || document.body,
-            allHeight = e.clientHeight;
-    body.style.height=containerHeight+'px';
-    body.style.position='relative';
-    var footer = document.getElementsByClassName("fix-footer")[0];
-    if(footer) {
-        if (containerHeight <= allHeight){
-            var style={position: 'absolute', bottom: '0px', zIndex: 1};
-            for(var p in style){
-                footer.style[p]=style[p];
+    function resize(){
+        var body=document.getElementsByTagName('body')[0];
+        var containerHeight = document.getElementsByTagName('body')[0].scrollHeight,
+                e = document.documentElement || document.body,
+                allHeight = e.clientHeight;
+        body.style.height=containerHeight+'px';
+        body.style.position='relative';
+        var footer = document.getElementsByClassName("fix-footer")[0];
+        if(footer) {
+            if (containerHeight <= allHeight){
+                var style={position: 'absolute', bottom: '0px', zIndex: 1};
+                for(var p in style){
+                    footer.style[p]=style[p];
+                }
             }
         }
     }
+    window.onresize=resize;
 </script>

@@ -1,14 +1,13 @@
-<link rel="shortcut icon" type="image/x-icon" href="<%= locals.staticServer %>/images/icon/favicon.ico?t=20141018000"/>
 <script type="text/javascript" src="<%= locals.staticServer %>/seajs/sea.js"></script>
 <!--<script type="text/javascript" src="<%= locals.staticServer %>/seajs/seajs-combo.js"></script>-->
 <script>
     seajs.config({
-        base: "<%=locals.staticServer%>/javascripts/",
+        base: "<%= locals.staticServer %>/javascripts/",
         comboSyntax: ['f=', ','],
         comboSuffix:'?t=20140913004',
         alias: {
-            "jQuery": "<%=locals.staticServer%>/javascripts/lib/jquery-1.10.2.min.js",
-            "jQueryColor": "<%=locals.staticServer%>/javascripts/lib/jquery.color-2.1.2.js"
+            "jQuery": "<%= locals.staticServer%>/javascripts/lib/jquery-1.10.2.min.js",
+            "jQueryColor": "<%= locals.staticServer %>/javascripts/lib/jquery.color-2.1.2.js"
         }
     });
 
