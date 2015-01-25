@@ -13,6 +13,7 @@ define(function (require, exports, module) {
         || navigator.mozGetUserMedia;
     var PeerConnection = window.RTCPeerConnection ||
         window.webkitRTCPeerConnection || window.mozRTCPeerConnection;
+    var callerSign
     /**
      *@alias module:webrtc
      */
@@ -34,8 +35,8 @@ define(function (require, exports, module) {
                     throw e;
                     return;
                 }
+                this._initWebsocketEvent();
                 this.peerConnections=[];
-
             },
             _initWebsocketEvent:function(){
                 var ws=this.websocket;
