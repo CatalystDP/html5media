@@ -32,8 +32,8 @@ define(function (require, exports, module) {
             if (__proto.hasOwnProperty("__construct")) {
                 __proto.__construct.apply(this, arguments);
             } else {
-                if (parent && parent.hasOwnProperty("__construct")) {
-                    parent.__construct.apply(this, arguments);
+                if (parent && parent.prototype.hasOwnProperty("__construct")) {
+                    parent.prototype.__construct.apply(this, arguments);
                     /**Child.parent指向parent的原型*/
                 }
             }
@@ -56,8 +56,7 @@ define(function (require, exports, module) {
                 };
                 F.prototype = Parent.prototype;
                 Child.prototype = new F();
-                Child.parent = Parent.prototype;
-
+                Child.parent = Parent;
             }
         }
         /**继承*/
@@ -106,7 +105,7 @@ define(function (require, exports, module) {
         }
         args = slice.call(arguments, 3);
         if (curClass.parent) {
-            curClass.parent[func].apply(context, args);
+            curClass.parent.prototype[func].apply(context, args);
             return true;
         }
         return false;

@@ -7,6 +7,7 @@ define(function (require, exports, module) {
     var klass = require('../mod/klass');
     var $ = require('../lib/jquery-1.10.2.min');
     var base = require('./base');
+    var Event=require('../mod/event');
     /**
      * @constructor
      * @alias module:widget
@@ -217,6 +218,12 @@ define(function (require, exports, module) {
                 cachedInstances[cid] = this;
             }
         });
+    $.extend(Widget.prototype,{
+        on:Event.prototype.on,
+        off:Event.prototype.off,
+        once:Event.prototype.once,
+        emit:Event.prototype.emit
+    });
     Widget.query = function (selector) {
         var element = $(selector).eq(0),
             cid;

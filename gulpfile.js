@@ -1,6 +1,6 @@
 var gulp=require('gulp');
 var stylus= require('gulp-stylus');
-
+var uglify=require('gulp-uglify');
 gulp.task('stylus',function(){
     return gulp.src('./public/stylus/**/*.styl')
         .pipe(stylus())
