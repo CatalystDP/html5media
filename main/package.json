@@ -23,5 +23,8 @@
     "request": "^2.49.0",
     "static-favicon": "~1.0.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "gulp": "^3.8.10",
+    "gulp-stylus": "^2.0.0"
+  }
 }
