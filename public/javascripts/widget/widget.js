@@ -48,6 +48,7 @@ define(function (require, exports, module) {
                 option = $.extend(defaultOption, option);
                 _init.call(this, option);
                 this._stamp();
+                Event.prototype.__construct.call(this);
             },
             /**
              * @method
