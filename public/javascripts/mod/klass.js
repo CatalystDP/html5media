@@ -110,5 +110,11 @@ define(function (require, exports, module) {
         }
         return false;
     };
+    _klass.inherits=function(ctor,superCtor){
+        var F=function(){};
+        F.prototype=superCtor.prototype;
+        ctor.prototype=new F();
+        ctor._super=superCtor;
+    };
     module.exports = _klass;
 });

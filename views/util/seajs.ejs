@@ -1,13 +1,18 @@
+<<<<<<< HEAD
 <script type="text/javascript" src="<%= staticServer %>/seajs/sea.js"></script>
 <!--<script type="text/javascript" src="<%= staticServer %>/seajs/seajs-combo.js"></script>-->
+=======
+<script type="text/javascript" src="<%= locals.staticServer %>/seajs/sea.js"></script>
+<!--<script type="text/javascript" src="<%= locals.staticServer %>/seajs/seajs-combo.js"></script>-->
+>>>>>>> tmp
 <script>
     seajs.config({
-        base: "<%= staticServer %>/javascripts/",
+        base: "<%= locals.staticServer %>/javascripts/",
         comboSyntax: ['f=', ','],
         comboSuffix:'?t=20140913004',
         alias: {
-            "jQuery": "<%= staticServer%>/javascripts/lib/jquery-1.10.2.min.js",
-            "jQueryColor": "<%=staticServer%>/javascripts/lib/jquery.color-2.1.2.js"
+            "jQuery": "<%= locals.staticServer%>/javascripts/lib/jquery-1.10.2.min.js",
+            "jQueryColor": "<%= locals.staticServer %>/javascripts/lib/jquery.color-2.1.2.min.js"
         }
     });
 

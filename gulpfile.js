@@ -1,6 +1,6 @@
 var gulp=require('gulp');
 var stylus= require('gulp-stylus');
-
+var uglify=require('gulp-uglify');
 gulp.task('stylus',function(){
     return gulp.src('./public/stylus/**/*.styl')
         .pipe(stylus())
@@ -10,3 +10,5 @@ gulp.task('watchStylus',function(done){
     gulp.watch('./public/stylus/**/*.styl',['stylus']);
     done();
 });
+
+
